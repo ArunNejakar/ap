@@ -16,16 +16,21 @@ def bookingDecision(requestHours, priority, existingHours, capacity):
 
 
 def main():
-    if len(sys.argv) != 6:
-        print(f"Usage: python {sys.argv[0]} <CameraID> <RequestHours> <Priority> <ExistingHours> <Capacity>")
-        return
-
     try:
-        cameraId = sys.argv[1]
-        requestHours = int(sys.argv[2])
-        priority = int(sys.argv[3])
-        existingHours = int(sys.argv[4])
-        capacity = int(sys.argv[5])
+        # Default values
+        cameraId = "CAM_DEFAULT"
+        requestHours = 5
+        priority = 3
+        existingHours = 10
+        capacity = 50
+
+        # Override defaults if arguments are provided
+        if len(sys.argv) == 6:
+            cameraId = sys.argv[1]
+            requestHours = int(sys.argv[2])
+            priority = int(sys.argv[3])
+            existingHours = int(sys.argv[4])
+            capacity = int(sys.argv[5])
 
         result = bookingDecision(requestHours, priority, existingHours, capacity)
 
